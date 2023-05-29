@@ -25,7 +25,7 @@ public class UserImplmapper implements UserDao {
     }
     public Integer addUser(User user){
 
-        int num=jdbcTemplate.update("insert into user (user_id,username,password,gender," +
+        int num=jdbcTemplate.update("insert into user (userid,username,password,gender," +
                 "email,phone) values (?,?,?,?,?,?)",null,user.getUsername(),user.getPassword(),user.getGender(),
                 user.getEmail(),user.getPhone());
         return num;
@@ -40,7 +40,7 @@ public class UserImplmapper implements UserDao {
 
     @Override
     public User selectById(int userid) {
-        User user=jdbcTemplate.queryForObject("select * from user where user_id=?",new Object[]{userid},User.class);
-        return user;
+        List<User> list=jdbcTemplate.query("select * from user where userid=?",new BeanPropertyRowMapper<User>(User.class),userid);
+        return list.get(0);
     }
 }

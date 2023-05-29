@@ -7,15 +7,26 @@ import java.util.Date;
 
 @Data
 public class Order {
-    private int orderid;
+    private int order_id;
+
+
+
     private int quantity;
+
     private float amount;
-    private Date order_time;
-    private int status;
-    private int userid;
-    private int productid;
+
+    private String order_time;
+
+    private int user_id;
+
+    private int product_id;
+
+
+
     private User orderuser;
+
     private Product orderproduct;
+
     @Transient
     public User getOrderuser() {
         return orderuser;

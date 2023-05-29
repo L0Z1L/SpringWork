@@ -23,8 +23,8 @@ public class Cartmapper implements CartDao {
     }
 
     @Override
-    public void deleteProductByProductId(int product_id) {
-        jdbcTemplate.update("delete from cart where product_id=?", product_id);
+    public void deleteProductByCart_id(int cart_id) {
+        jdbcTemplate.update("delete from cart where cart_id=?", cart_id);
     }
 
     @Override
@@ -37,6 +37,19 @@ public class Cartmapper implements CartDao {
         return product;
     }
     public void updateProductQuantity(int cart_id,int num){
+        jdbcTemplate.update("update cart set quantity=quantity+? where cart_id=?",num,cart_id);
+    }
+    public int find_CartByUserId(int user_id,int product_id) {
+        int car_id;
+        try{
+             car_id =jdbcTemplate.queryForObject("select cart_id from  cart where user_id=? and product_id=?",new Object[]{user_id,product_id},Integer.class);
+        }catch (Exception e){
+            car_id =0;
+        }
+
+        return car_id;
+    }
+    public void updateProductQuantity1(int cart_id,int num){
         jdbcTemplate.update("update cart set quantity=? where cart_id=?",num,cart_id);
     }
 }

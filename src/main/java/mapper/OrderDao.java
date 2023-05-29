@@ -11,6 +11,7 @@ public interface OrderDao {
     List<Order> findOrderByStatus(int status);
     Integer deleteOrder(int OrderId);
     Integer insertOrder(Order order);
+    void addorder(int card_id,int user_id);
 
 
 }

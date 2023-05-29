@@ -28,5 +28,11 @@ public class OrderController {
         return this.iOrderService.deleteOrder(order_id);
     }
 
+    public void insertOrder(Order order){
+        this.iOrderService.insert(order);
+    }
 
+    public void addorder(int card_id,int user_id){
+       this.iOrderService.addorder(card_id, user_id);
+    }
 }

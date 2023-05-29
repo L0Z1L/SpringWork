@@ -22,13 +22,13 @@ public class Productmapper implements ProductDao {
 
     @Override
     public List<Product> findProductByCategoty(String category) {
-        List<Product> list=jdbcTemplate.query("select * from product where category=?", new BeanPropertyRowMapper<Product>(Product.class),category);
+        List<Product> list=jdbcTemplate.query("select * from product where product_category=?", new BeanPropertyRowMapper<Product>(Product.class),category);
         return list;
     }
 
     @Override
     public List<Product> findProductByPrice(int startprice, int endprice) {
-        List<Product> list=jdbcTemplate.query("select * from product where price between ? and ?", new BeanPropertyRowMapper<Product>(Product.class),startprice,endprice);
+        List<Product> list=jdbcTemplate.query("select * from product where product_price between ? and ?", new BeanPropertyRowMapper<Product>(Product.class),startprice,endprice);
         return list;
     }
 
@@ -40,8 +40,8 @@ public class Productmapper implements ProductDao {
 
     @Override
     public Product selectByProductId(int productid) {
-       Product product=jdbcTemplate.queryForObject("select * from product where product_id=?",new Object[]{productid},Product.class);
-        return product;
+        List<Product> list=jdbcTemplate.query("select * from product where product_id=?",new BeanPropertyRowMapper<Product>(Product.class),productid);
+        return list.get(0);
     }
 
 

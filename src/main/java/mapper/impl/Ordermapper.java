@@ -18,8 +18,8 @@ public class Ordermapper implements OrderDao {
     private JdbcTemplate jdbcTemplate;
     @Override
     public List<Order> findOrderByUserId(int user_id) {
-        List<Order> list=jdbcTemplate.query("select * from order o inner join user u on " +
-                "o.user_id=u.user_id where u.user_id=?",new BeanPropertyRowMapper<Order>(Order.class),user_id);
+        List<Order> list=jdbcTemplate.query("select * from orders o inner join user u on " +
+                "   o.user_id=u.userid  inner join product as p on p.product_id = o.product_id where u.userid=?",new BeanPropertyRowMapper<Order>(Order.class),user_id);
         return list;
 
     }
@@ -40,11 +40,21 @@ public class Ordermapper implements OrderDao {
 
     @Override
     public Integer insertOrder(Order order) {
-        int num=jdbcTemplate.update("insert into order values (?,?,?,?,?,?,?)",null,order.getUserid(),order.getProductid(),
-                order.getQuantity(),order.getAmount(),null,order.getStatus());
+        int num=jdbcTemplate.update("insert into order values (?,?,?,?,?,?)",null,order.getUser_id(),order.getProduct_id(),
+                order.getQuantity(),order.getAmount(),null);
         return num;
     }
 
+//    @Override
+//    public List<Order> findorder(int card_id) {
+//        List<Order> list=jdbcTemplate.query("select orders.*,product.* from orders " +
+//                "inner join product on orders.product_id=product.product_id" +
+//                "  inner join cart on orders.product_id=cart.product_id where cart.cart_id=?",new BeanPropertyRowMapper<Order>(Order.class),card_id);
+//        return list;
+//    }
+    public void addorder(int card_id,int user_id) {
+        jdbcTemplate.update("call inserorder(?, ?)",card_id,user_id);
+    }
 
 
 

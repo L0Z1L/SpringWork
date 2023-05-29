@@ -32,10 +32,14 @@ public class Products {
     }
     @RequestMapping("/addproduct")
     public ModelAndView addproduct(String name,int userid, int product_id, int quantity, ModelAndView modelAndView){
+        int car_id=0;
         ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
         CartController cartController=context.getBean("cartController", CartController.class);
-        cartController.findCartByCartId(product_id,userid);
-        cartController.addProduct(userid,product_id,quantity);
+        car_id  =  cartController.find_CartByUserId(userid,product_id);
+        if (car_id == 0)
+            cartController.addProduct(userid,product_id,quantity);
+        else
+            cartController.updateProductQuantity(car_id,quantity);
 
         modelAndView.setViewName("redirect:/Page/Product.jsp");
         return modelAndView;

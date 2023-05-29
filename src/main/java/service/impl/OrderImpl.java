@@ -25,8 +25,8 @@ public class OrderImpl implements IOrderService {
     public List<Order> findOrderByUserId(int user_id) {
         List<Order> list=this.orderDao.findOrderByUserId(user_id);
         for(Order order:list){
-            User user=this.userDao.selectById(order.getUserid());
-            Product product=this.productDao.selectByProductId(order.getProductid());
+            User user=this.userDao.selectById(order.getUser_id());
+            Product product=this.productDao.selectByProductId(order.getProduct_id());
             order.setOrderproduct(product);
             order.setOrderuser(user);
         }
@@ -37,8 +37,8 @@ public class OrderImpl implements IOrderService {
     public List<Order> findOrderByStatus(int status) {
         List<Order> list=this.orderDao.findOrderByStatus(status);
         for(Order order:list){
-            User user=this.userDao.selectById(order.getUserid());
-            Product product=this.productDao.selectByProductId(order.getProductid());
+            User user=this.userDao.selectById(order.getUser_id());
+            Product product=this.productDao.selectByProductId(order.getProduct_id());
             order.setOrderproduct(product);
             order.setOrderuser(user);
         }
@@ -51,6 +51,13 @@ public class OrderImpl implements IOrderService {
        else
            return "fail";
     }
+
+    @Override
+    public void addorder(int card_id, int user_id) {
+        this.orderDao.addorder(card_id,user_id);
+    }
+
+
     public String deleteOrder(int orderId) {
         int num=this.orderDao.deleteOrder(orderId);
         if(num>0)
@@ -58,4 +65,14 @@ public class OrderImpl implements IOrderService {
         else
             return "fail";
     }
+//    public List<Order> addorder(int card_id){
+//        List<Order> list=orderDao.addorder(card_id);
+//        for(Order order:list){
+//
+//            Product product=this.productDao.selectByProductId(order.getProduct_id());
+//            order.setOrderproduct(product);
+//
+//        }
+//        return list;
+//    }
 }

@@ -24,8 +24,17 @@ public class CartImpl implements ICartService {
     public List<Cart> findCartByUserId(int userid) {
         return this.cartDao.findCartByUserId(userid);
     }
+
     public List<Product> findCartByCartId(int cart_id){
         return this.cartDao.findCartByCartId(cart_id);
     }
+
+    public int find_CartByUserId(int user_id,int product_id){return this.cartDao.find_CartByUserId(user_id,product_id);}
+
+    @Override
+    public void deleteProductByCart_id(int cat_id) {
+        this.cartDao.deleteProductByCart_id( cat_id);
+    }
+
 
 }

@@ -28,8 +28,8 @@ public class CartController {
 
     }
 
-    public void deleteProductByProductId(int product_id){
-        this.cartDao.deleteProductByProductId(product_id);
+    public void deleteProductByCart_id(int cart_id){
+        this.cartDao.deleteProductByCart_id(cart_id);
     }
 
     public List<Cart> findProductByUserId(int userid){
@@ -50,6 +50,14 @@ public class CartController {
     }
     public void updateProductQuantity(int cart_id,int num){
         this.cartDao.updateProductQuantity(cart_id,num);
+    }
+    public void updateProductQuantity1(int cart_id,int num){
+        this.cartDao.updateProductQuantity(cart_id,num);
+    }
+
+
+    public int find_CartByUserId(int user_id,int product_id){
+        return  this.iCartService.find_CartByUserId(user_id,product_id);
     }
 
 }
