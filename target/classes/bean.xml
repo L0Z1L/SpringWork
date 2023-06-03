@@ -23,7 +23,7 @@
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/*"/>
+            <mvc:mapping path="/**"/>
             <!--配置不需要拦截的作用路径-->
             <mvc:exclude-mapping path="/LoginCheck/check"/>
             <bean class="controller.DispatcherServlet.MyInterceptor"/>

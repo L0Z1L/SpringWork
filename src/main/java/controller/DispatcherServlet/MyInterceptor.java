@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 public class MyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
         User user = (User) request.getSession().getAttribute("user");
         if(user==null){
-            response.sendRedirect("/Page/catalog.jsp");
+            response.sendRedirect("/Page/login.jsp");
             return false;
         }
         return true;

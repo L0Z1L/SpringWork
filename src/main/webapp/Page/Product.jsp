@@ -109,7 +109,7 @@
                         <input type="text" value="${sessionScope.product.product_id}" name="product_id" hidden>
                         <input type="text" value="1" name="quantity" id = "quantitys">
 
-                        <button  id="addbuy" class="butten"><span class="glyphicon glyphicon-shopping-cart"></span>
+                        <button  id="addbuy" class="butten"  onclick="Alter()"><span class="glyphicon glyphicon-shopping-cart"></span>
                             Add to cart</button>
                     </form>
                     <div class="share">
@@ -226,12 +226,11 @@
 <script src="js/style.js"></script>
 <script src="js/product.js"></script>
 <script>
- var buttonadd = document.getElementById("addbu")
-  buttonadd.onclick =  function Alter() {
-     if(this.click){
+
+ function Alter() {
          var valuse=document.getElementById("quantitys").value
-         alert("以添加"+ valuse+"到购物车")
-     }
+         alert("以添加"+ valuse+"件到购物车")
+
 
     }
 </script>

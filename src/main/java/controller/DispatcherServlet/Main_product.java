@@ -21,18 +21,19 @@ import java.util.List;
 @RequestMapping("/Main_products")
 public class Main_product {
     @RequestMapping("/Product")
-    public  ModelAndView GetMain( HttpSession session){
+    public  String GetMain( HttpSession session){
         ModelAndView model=new ModelAndView();
+
         User user= (User) session.getAttribute("user");
 
         if (user == null){
-            model.setViewName("Page/login");
-            return model;
+
+            return  "redirect:Page/login";
 
 
         }
-        model.setViewName("WEB-INF/Page/Main_after");
-        return model;
+
+        return "redirect:/Main_products/GetProducts";
 
     }
 
