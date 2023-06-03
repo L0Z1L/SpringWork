@@ -27,13 +27,13 @@
                 <ul>
 
                     <li class="btn login">
-                        <a href="/login.jsp">
+                        <a href="/Page/login.jsp">
                             <span class="glyphicon glyphicon-lock"></span>
                             登录
                         </a>
                     </li>
                     <li class="btn register">
-                        <a href="/register.jsp">
+                        <a href="/Page/register.jsp">
                             <span class="glyphicon glyphicon-user"></span>
                             注册
                         </a>
@@ -50,8 +50,8 @@
                         <li class="menu-btn">
                             <a href="#">商城 <span class="arrow"></span></a>
                             <ul class="sub-menu">
-                                <li><a href="../../Page/catalog.jsp">订单详情</a></li>
-                                <li><a href="../../Page/catalog.jsp">购物车</a></li>
+                                <li><a href="/Order/orders">订单详情</a></li>
+                                <li><a href="/Shopcar/car">购物车</a></li>
                             </ul>
                         </li>
                         <li><a href="../../Page/catalog.jsp">退出</a></li>
